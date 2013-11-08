@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mocha tests</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+  </head>
+  <body>
+    
+    <div id="mocha"></div>
+    <div id="fixtures"></div>
+    
+    <!-- Dependencies -->
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="../node_modules/accounting/accounting.js"></script>
+    
+    <!-- Source -->
+    <script src="../jquery.accounting.js"></script>
+    
+    <!-- Mocha setup -->
+    <script>mocha.setup('bdd'); chai.should();</script>
+    
+    <!-- Tests -->
+    <script src="helpers.js"></script>
+    <script src="spec/jquery.accounting.js"></script>
+    
+    <script>
+      mocha.checkLeaks();
+      if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+      else { mocha.run(); }
+    </script>
+  </body>
+</html>
