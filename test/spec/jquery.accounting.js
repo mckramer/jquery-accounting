@@ -125,4 +125,20 @@ describe("jQuery.accounting", function () {
     
   });
   
+  describe("toFixed", function () {
+    
+    afterEach(utils.clearFixtures);
+    
+    it("formats one item", function () {
+      var $item;
+      
+      utils.setFixture('<span>0.615</span>');
+      
+      $item = utils.$('span');
+      $item.accounting('toFixed', 2);
+      $item.text().should.equal('0.62');
+    });
+    
+  });
+  
 });
