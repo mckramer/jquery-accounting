@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>jQuery.accounting</title>
+    <meta name="author" content="Max Kramer" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/simplex/bootstrap.min.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="./demo/index.css" type="text/css" media="screen, projection" />
+    
+    <!-- JS -->
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.3.2/accounting.min.js"></script>
+    <script src="./jquery.accounting.js"></script>
+    <script src="./demo/index.js"></script>
+    
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <div class="row-fluid">
+          <div class="offset7 span5">
+            <ul class="nav nav-pills">
+              <li class="active"><a href="./">Home</a></li>
+              <li><a href="https://github.com/mckramer/jquery-accounting/">README</a></li>
+              <li><a href="https://github.com/mckramer/jquery-accounting/issues">Issues</a></li>
+            </ul>
+          </div>
+        </div>
+        <h1>
+          jQuery.accounting
+          <small>v0.1.0 ALPHA</small>
+        </h1>
+        <p class="lead">The jQuery plugin for the accounting and number formatter library, <a href="http://josscrowcroft.github.io/accounting.js/">accounting.js</a>.</p>
+      </header>
+      <h2>Examples</h2>
+      <div>
+        <table id="examples" class="table table-striped">
+          <tbody>
+            <tr class="warning">
+              <th>raw</th>
+              <td>0.10</td>
+              <td>1.00</td>
+              <td>123.145</td>
+              <td>5318008</td>
+            </tr>
+            <tr data-method="formatMoney">
+              <th>formatMoney</th>
+              <td>0.10</td>
+              <td>1.00</td>
+              <td>123.145</td>
+              <td>5318008</td>
+            </tr>
+            <tr data-method="formatMoney" data-options='{ "symbol": "€" }'>
+              <th>formatMoney (€)</th>
+              <td>0.10</td>
+              <td>1.00</td>
+              <td>123.145</td>
+              <td>5318008</td>
+            </tr>
+            <tr data-method="formatNumber">
+              <th>formatNumber</th>
+              <td>0.10</td>
+              <td>1.00</td>
+              <td>123.145</td>
+              <td>5318008</td>
+            </tr>
+            <tr data-method="formatNumber" data-options="2">
+              <th>formatNumber (2)</th>
+              <td>0.10</td>
+              <td>1.00</td>
+              <td>123.145</td>
+              <td>5318008</td>
+            </tr>
+            <tr data-method="toFixed" data-options="2">
+              <th>toFixed (2)</th>
+              <td>0.10</td>
+              <td>1.00</td>
+              <td>123.145</td>
+              <td>5318008</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <h2>Usage</h2>
+          <h3>Quickstart</h3>
+          <div class="row-fluid">
+            <div class="span4">
+              <p>Include <a href="http://josscrowcroft.github.io/accounting.js">accounting.js</a> and jQuery.accounting.</p>
+            </div>
+            <div class="span8">
+              <pre>
+&lt;script src="/path/to/accounting.js"&gt;&lt;/script&gt;
+&lt;script src="/path/to/jquery.accounting.js"&gt;&lt;/script&gt;</pre>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span4">
+              <p>Use the API as you like.</p>
+            </div>
+            <div class="span8">
+              <pre>$('div').accounting('formatMoney');</pre>
+            </span>
+          </div>
+          
+          <h3>Methods</h3>
+          <div class="row-fluid">
+            <div class="span4">
+              <p>The methods and options attempt to mimic accounting.js as close as possible.</p>
+            </div>
+            <div class="span8">
+              <pre>$('div').accounting(method, options);</pre>
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Options</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>formatNumber</td>
+                    <td>
+                      <div class="argument">
+                        <h4>precision <small>number</small></h4>
+                        <p class="muted">The number of digits to right of decimal</p>
+                      </div>
+                      <hr>
+                      <div class="argument">
+                        <h4>thousand <small>string</small></h4>
+                        <p class="muted">The character to use for the thousands separator</p>
+                      </div>
+                      <hr>
+                      <div class="argument">
+                        <h4>decimal <small>string</small></h4>
+                        <p class="muted">The character to use for the decimal</p>
+                      </div>
+                    </td>
+                    <td>format a number with custom precision and localisation</td>
+                  </tr>
+                  <tr>
+                    <td>formatMoney</td>
+                    <td>
+                      <div class="argument">
+                        <h4>symbol <small>string</small></h4>
+                        <p class="muted">The currency symbol</p>
+                      </div>
+                      <hr>
+                      <div class="argument">
+                        <h4>precision <small>number</small></h4>
+                        <p class="muted">The number of digits to right of decimal</p>
+                      </div>
+                      <hr>
+                      <div class="argument">
+                        <h4>thousand <small>string</small></h4>
+                        <p class="muted">The character to use for the thousands separator</p>
+                      </div>
+                      <hr>
+                      <div class="argument">
+                        <h4>decimal <small>string</small></h4>
+                        <p class="muted">The character to use for the decimal</p>
+                      </div>
+                      <hr>
+                      <div class="argument">
+                        <h4>format <small>string</small></h4>
+                        <p class="muted">The format for the currency output. Use <code>%s</code> for the symbol and <code>%v</code> for the value.</p>
+                      </div>
+                    </td>
+                    <td>format any number into currency</td>
+                  </tr>
+                  <tr>
+                    <td>toFixed</td>
+                    <td>
+                      <div class="argument">
+                        <h4>precision <small>number</small></h4>
+                        <p class="muted">The number of digits to right of decimal</p>
+                      </div>
+                    </td>
+                    <td>better rounding for floating point numbers</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <h2>Contact</h2>
+          <div class="media">
+            <a class="pull-left" href="#">
+              <img class="media-object" src="http://www.gravatar.com/avatar/7f7656e80cd96458ccdffef5a4ff6843.jpg?s=64">
+            </a>
+            <div class="media-body">
+              <h4 class="media-header">Max Kramer</h4>
+              <p></p>
+              <p>Feel free to reach out to me on GitHub or Twitter using the links below.</p>
+              <ul class="thumnails">
+                <li class="span1">
+                  <a class="thumbnail" href="https://github.com/mckramer">
+                    <img src="./github.png" />
+                  </a>
+                </li>
+                <li class="span1">
+                  <a class="thumbnail" href="https://twitter.com/maxckramer">
+                    <img src="./twitter.png" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <h2>License</h2>
+          <p><a href="https://github.com/mckramer/charcoal/blob/master/LICENSE">MIT</a></p>
+        </div>
+      </div>
+    </div>
+    <a href="https://github.com/mckramer/jquery-accounting/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+  </body>
+</html>
