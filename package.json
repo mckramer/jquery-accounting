@@ -8,7 +8,7 @@
   "license"       : "MIT",
   
   "homepage"      : "http://mckramer.github.io/jquery-accounting/",
-  "bugs"        : "https://github.com/mckramer/jquery-accounting/issues",
+  "bugs"          : "https://github.com/mckramer/jquery-accounting/issues",
   "repository"    : { "type": "git", "url": "git://github.com/mckamer/jquery-accounting.git" },
   
   "scripts": {
