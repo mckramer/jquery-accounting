@@ -1,6 +1,6 @@
 {
   "name"          : "jquery-accounting",
-  "description"   : "",
+  "description"   : "A simple, jQuery plugin wrapper for accounting.js.  It allows you to format data values directly from HTML.a simple, jQuery plugin wrapper for accounting.js.  It allows you to format data values directly from HTML.",
   "keywords"      : ["jquery.accounting", "jquery-accounting", "accounting"],
   "version"       : "0.1.0",
   
@@ -16,19 +16,19 @@
   },
   
   "dependencies": {
-    "accounting": "0.3.2",
-    "jquery": "*"
+    "accounting": "~0.3.2",
+    "jquery":     "*"
   },
   
   "devDependencies": {
     "chai"                  : "*",
-    "grunt"                 : "0.4.1",
-    "grunt-contrib-clean"   : "0.4.1",
-    "grunt-contrib-jshint"  : "0.3.0",
-    "grunt-contrib-uglify"  : "0.2.0",
-    "grunt-contrib-watch"   : "0.3.1",
-    "grunt-mocha"           : "0.3.3",
-    "mocha"                 : "*"
+    "grunt"                 : "~0.4.4",
+    "grunt-contrib-clean"   : "~0.5.0",
+    "grunt-contrib-connect" : "~0.7.1",
+    "grunt-contrib-jshint"  : "~0.9.2",
+    "grunt-contrib-uglify"  : "~0.3.3",
+    "grunt-contrib-watch"   : "~0.4.1",
+    "grunt-mocha"           : "~0.4.10"
   }
   
 }

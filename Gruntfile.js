@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
   
+  var connectPort = 9000;
+  
   grunt.initConfig({
     // Metadata
     banner: '/*! <%= pkg.name %> (v<%= pkg.version %>) <%= grunt.template.today("dd-mm-yyyy") %> */',
@@ -10,20 +12,33 @@ module.exports = function (grunt) {
     clean: {
       min: ['jquery.<%= namespace %>.min.js']
     },
+    connect: {
+      options: {
+        port: connectPort
+      },
+      test: {}
+    },
     jshint: {
-      files: ['gruntfile.js', 'jquery.<%= namespace %>.js', 'test/**/*.js'],
+      all: ['Gruntfile.js', 'jquery.<%= namespace %>.js', 'test/**/*.js'],
       options: {
         // Override JSHint defaults
         laxcomma: true,
         globals: {
           accounting: true,
           jQuery: true
-        }
+        },
+        scripturl: true
       }
     },
     mocha: {
-      all: ['test/index.html'],
-      options: { run: true }
+      options: {
+        run: true
+      },
+      all: {
+        options: {
+          urls: ['http://localhost:9000/test/index.html']
+        }
+      }
     },
     uglify: {
       options: {
@@ -42,12 +57,13 @@ module.exports = function (grunt) {
   });
   
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha');
   
-  grunt.registerTask('test', ['jshint', 'mocha']);
+  grunt.registerTask('test', ['connect:test', 'mocha:all']);
   grunt.registerTask('default', ['jshint', 'mocha', 'clean', 'uglify']);
   
 };
